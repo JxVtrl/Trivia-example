@@ -6,6 +6,7 @@ const AppContext = createContext()
 export function AppProvider({ children }) {
     const [step, setStep] = useState(0)
 
+    const [mode, setMode] = useState('')
     const [name, setName] = useState('')
     const [category, setCategory] = useState('')
     const [level, setLevel] = useState('')
@@ -16,14 +17,27 @@ export function AppProvider({ children }) {
     useEffect(() => {
         if (step < 0) {
             setStep(0)
-        } else if (step === 2) {
-            fetchApi()
+        } else if (step === 2 && mode === 'normal') {
+            fetchApiNormal()
+        } else if (step === 2 && mode === 'rank') {
+            fetchApiRank()
         }
         console.log(step)
     }, [step])
 
-    function fetchApi() {
+    function fetchApiNormal() {
         axios.get(createURL(amount, category, level))
+            .then(res => {
+                console.log(res.data)
+                setTrivia(res.data.results)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    function fetchApiRank() {
+        axios.get(createURL(1, category, level))
             .then(res => {
                 console.log(res.data)
                 setTrivia(res.data.results)
@@ -35,6 +49,8 @@ export function AppProvider({ children }) {
 
 
     const value = {
+        mode,
+        setMode,
         name,
         setName,
         step,
