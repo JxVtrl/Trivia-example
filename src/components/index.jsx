@@ -1,1 +1,1 @@
-export { AmountForm, LevelForm, NameForm, ThemeForm } from './Forms'
+export { AmountForm, LevelForm, NameForm, ThemeForm, ModeForm } from './Forms'
