@@ -9,7 +9,7 @@ export function Game() {
 
     return (
         <Container>
-            {mode === 'rank' && trivia ? (
+            {mode === 'rank' ? (
                 <Question
                     question={trivia[questionNum].question}
                     answers={item.incorrect_answers.join('%20') + '%20' + item.correct_answer}
