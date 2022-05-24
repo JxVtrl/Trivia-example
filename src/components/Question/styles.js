@@ -21,7 +21,7 @@ export const wrong = keyframes`
 export const Container = styled.div`
     width: 100%;
     height: 100vh;
-    margin: 20px 0 0;
+    padding: 6vh 0;
 
     h1 {
         font-size: ${props => props.mobile ? '1rem' : '1.4rem'};
@@ -30,7 +30,7 @@ export const Container = styled.div`
     }
   
     ul {
-        margin: 20px 0;
+        margin: 30px 0;
 
         ${props => props.mobile ? css`
             display: flex;
@@ -47,7 +47,6 @@ export const Container = styled.div`
 
     li {
         list-style: none;
-        
         width: 220px;
         height: 100px;
         display: flex;

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useRef } from 'react'
 import { createURL } from '../services/useTriviaApi'
+import { options } from '../services/useTriviaOptions'
 import axios from 'axios';
 const AppContext = createContext()
 
@@ -26,22 +27,29 @@ export function AppProvider({ children }) {
     }
 
     function getRandomLevel() {
-        const levels = ['easy', 'medium', 'hard']
         const random = Math.floor(Math.random() * 3)
-        return levels[random]
+        return options.difficulty[random]
     }
 
     function fetchApiRank() {
-        axios.get(createURL(1, category, getRandomLevel()))
+        axios.get(createURL(5, category, getRandomLevel()))
             .then(res => {
-                console.log(res.data.results)
-                setTrivia(res.data.results)
+                setTrivia(...trivia, res.data.results)
             })
             .catch(err => {
                 console.log(err)
             })
     }
 
+    useEffect(() => {
+        console.log(trivia)
+    },[trivia])
+
+    useEffect(() => {
+        if (mode === 'rank' && questionNum % 5 === 0 && questionNum !== 0) {
+            fetchApiRank()
+        }
+    },[questionNum])
 
     const value = {
         mode,

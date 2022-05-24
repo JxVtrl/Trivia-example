@@ -28,6 +28,7 @@ export function NameForm() {
               value={name}
               onChange={e => setName(e.target.value)} />
       </label>
+      <input type="submit" value="Submit" />
     </Form>
   );
 }

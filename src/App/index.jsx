@@ -5,12 +5,12 @@ import { Main } from './styles'
 
 function App() {
   const { step, questionNum } = useApp()
-  
+
   useEffect(() => {
     handleScroll(questionNum)
   }, [questionNum])
-  
-  function handleScroll(question) {  
+
+function handleScroll(question) {  
     document.getElementById('main').style.transform = `translateY(-${100*question}%)`
   }
 

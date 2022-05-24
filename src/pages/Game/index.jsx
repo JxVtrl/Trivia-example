@@ -5,28 +5,18 @@ import { useApp } from '../../context';
 import { Question } from '../../components/Question';
 
 export function Game() {
-    const { trivia, mode, questionNum } = useApp();
+    const { trivia } = useApp();
 
     return (
         <Container>
-            {mode === 'rank' ? (
+            {trivia && trivia.map((item, index) => (
                 <Question
-                    question={trivia[questionNum].question}
+                    key={index}
+                    question={item.question}
                     answers={item.incorrect_answers.join('%20') + '%20' + item.correct_answer}
-                    correct={trivia[questionNum].correct_answer}
+                    correct={item.correct_answer}
                 />
-            ) : (
-                    <>
-                        {trivia && trivia.map((item, index) => (
-                            <Question
-                                key={index}
-                                question={item.question}
-                                answers={item.incorrect_answers.join('%20') + '%20' + item.correct_answer}
-                                correct={item.correct_answer}
-                            />
-                        ))}
-                </>
-            )}
+            ))}
         </Container>
-  );
+    );
 }
