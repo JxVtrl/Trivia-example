@@ -1,10 +1,10 @@
-import React from 'react';
-import { Label } from './styles';
-import { useApp } from '../../../context';
+import React from 'react'
+import { Label } from './styles'
+import { useApp } from '../../../context'
 
-export function ModeForm() {
-    const { setMode } = useApp();
-    return (
+export function ModeForm () {
+  const { setMode } = useApp()
+  return (
         <Label>
             Choose the game mode:
             <select
@@ -16,5 +16,5 @@ export function ModeForm() {
                 <option value="rank">Ranking</option>
             </select>
         </Label>
-    );
+  )
 }

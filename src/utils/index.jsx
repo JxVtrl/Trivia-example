@@ -1,1 +1,1 @@
-export { options } from './useTriviaOptions';
+export { options } from './useTriviaOptions'

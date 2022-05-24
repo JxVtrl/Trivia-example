@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export function setWindowWidth(
+export function setWindowWidth (
   width,
   minWidth,
   maxWidth
@@ -15,7 +15,7 @@ export function setWindowWidth(
   }
 }
 
-export function useDevice() {
+export function useDevice () {
   const [width, setWidth] = useState(window.innerWidth)
 
   const resizeHandler = () => {
@@ -31,7 +31,7 @@ export function useDevice() {
 
   const device = {
     isMobile: setWindowWidth(width, 0, 768),
-    isDesktop: setWindowWidth(width, 769, 0),
+    isDesktop: setWindowWidth(width, 769, 0)
   }
 
   return { device }

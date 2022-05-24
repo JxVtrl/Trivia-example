@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components'
 
 export const correct = keyframes`
     from {
@@ -32,12 +32,14 @@ export const Container = styled.div`
     ul {
         margin: 30px 0;
 
-        ${props => props.mobile ? css`
+        ${props => props.mobile
+? css`
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
-        ` : css`
+        `
+: css`
             display: grid;
             grid-template-columns: ${props => props.mobile ? '1fr' : 'repeat(2, 1fr)'};
             grid-gap: 20px;
@@ -71,4 +73,4 @@ export const Container = styled.div`
         animation: ${wrong} 0.3s infinite;
     }
 
-`;
+`

@@ -1,46 +1,45 @@
-import React, { useEffect} from 'react';
-import { useApp } from '../../context';
-import { Container } from './styles';
-import { AmountForm, LevelForm, ModeForm, NameForm, ThemeForm } from '../../components/Forms';
+import React, { useEffect } from 'react'
+import { useApp } from '../../context'
+import { Container } from './styles'
+import { AmountForm, LevelForm, ModeForm, NameForm, ThemeForm } from '../../components/Forms'
 
-export function Menu() {
-    const {
-        setStep,
-        step,
-        setCategory,
-        category,
-        level,
-        amount,
-        mode,
-        fetchApiNormal,
-        fetchApiRank
-    } = useApp();
+export function Menu () {
+  const {
+    setStep,
+    step,
+    category,
+    level,
+    amount,
+    mode,
+    fetchApiNormal,
+    fetchApiRank
+  } = useApp()
 
-    useEffect(() => {
-        if (localStorage.getItem('name')) {
-            setStep(1)
-        }
-    }, [])
-
-    function submitOptions(event) {
-        event.preventDefault();
-
-        if ((category && level && amount && mode === 'normal') || (mode === 'rank' && category)) {
-            if (mode === 'rank') {
-                fetchApiRank()
-            } else {
-                fetchApiNormal()
-            }
-
-            setStep(step + 1);
-        }
+  useEffect(() => {
+    if (localStorage.getItem('name')) {
+      setStep(1)
     }
+  }, [])
 
-    return (
+  function submitOptions (event) {
+    event.preventDefault()
+
+    if ((category && level && amount && mode === 'normal') || (mode === 'rank' && category)) {
+      if (mode === 'rank') {
+        fetchApiRank()
+      } else {
+        fetchApiNormal()
+      }
+
+      setStep(step + 1)
+    }
+  }
+
+  return (
         <Container>
-            {step === 0 ?
-                <NameForm /> :
-                <form onSubmit={e => submitOptions(e)}>
+            {step === 0
+              ? <NameForm />
+              : <form onSubmit={e => submitOptions(e)}>
                     <ModeForm />
                     <ThemeForm />
                     <LevelForm />
@@ -49,5 +48,5 @@ export function Menu() {
                 </form>
             }
         </Container>
-    );
+  )
 }

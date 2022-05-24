@@ -1,9 +1,9 @@
-import React from 'react';
-import { useApp } from '../../../context';
-import { Label } from './styles';
+import React from 'react'
+import { useApp } from '../../../context'
+import { Label } from './styles'
 
-export function LevelForm() {
-  const { setLevel, mode } = useApp();
+export function LevelForm () {
+  const { setLevel, mode } = useApp()
 
   return (
     <Label isDisabled={mode === 'rank'}>
@@ -19,5 +19,5 @@ export function LevelForm() {
         <option value="hard">Hard</option>
       </select>
     </Label>
-  );
+  )
 }

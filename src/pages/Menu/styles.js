@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
     width: 60%;
@@ -10,4 +10,4 @@ export const Container = styled.div`
         flex-direction: column;
         gap: 15px;
     }
-`;
+`

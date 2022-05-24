@@ -1,2 +1,2 @@
-export { Menu } from './Menu';
-export { Game } from './Game';
+export { Menu } from './Menu'
+export { Game } from './Game'

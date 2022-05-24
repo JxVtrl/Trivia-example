@@ -1,15 +1,15 @@
-import React from 'react';
-import { useApp } from '../../../context';
+import React from 'react'
+import { useApp } from '../../../context'
 import { options } from '../../../utils/useTriviaOptions'
 
-import { Label } from './styles';
+import { Label } from './styles'
 
-export function ThemeForm() {
-  const { setCategory } = useApp();
+export function ThemeForm () {
+  const { setCategory } = useApp()
 
-  const { themes } = options;
-  const categories = Object.keys(themes).map(key => themes[key]);
-  
+  const { themes } = options
+  const categories = Object.keys(themes).map(key => themes[key])
+
   return (
     <Label>
         Select your theme:
@@ -24,5 +24,5 @@ export function ThemeForm() {
           ))}
         </select>
     </Label>
-  );
+  )
 }

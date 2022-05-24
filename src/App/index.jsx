@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useApp } from '../context'
 import { Menu, Game } from '../pages'
 import { Main } from './styles'
 
-function App() {
+function App () {
   const { step, questionNum } = useApp()
 
   useEffect(() => {
     handleScroll(questionNum)
   }, [questionNum])
 
-function handleScroll(question) {  
-    document.getElementById('main').style.transform = `translateY(-${100*question}%)`
+  function handleScroll (question) {
+    document.getElementById('main').style.transform = `translateY(-${100 * question}%)`
   }
 
   return (

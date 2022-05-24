@@ -1,22 +1,21 @@
-import React from 'react';
-import { useApp } from '../../../context';
-import { Form } from './styles';
+import React from 'react'
+import { useApp } from '../../../context'
+import { Form } from './styles'
 
-export function NameForm() {
-  const { setName, name, setStep } = useApp();
+export function NameForm () {
+  const { setName, name, setStep } = useApp()
 
-  function submitName(event) {
-    event.preventDefault();
-    
+  function submitName (event) {
+    event.preventDefault()
+
     if (!name || name < 3) {
-        alert('Nome inválido');
-        return;
+      alert('Nome inválido')
     } else {
-        localStorage.setItem('name', name);
-        setStep(1);
+      localStorage.setItem('name', name)
+      setStep(1)
     }
   }
-  
+
   return (
     <Form onSubmit={(e) => submitName(e)}>
       <label>
@@ -30,5 +29,5 @@ export function NameForm() {
       </label>
       <input type="submit" value="Submit" />
     </Form>
-  );
+  )
 }
