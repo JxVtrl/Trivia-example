@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../../context';
-import { options } from '../../../services/useTriviaOptions'
+import { options } from '../../../utils/useTriviaOptions'
 
 import { Label } from './styles';
 

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useRef } from 'react'
-import { createURL } from '../services/useTriviaApi'
-import { options } from '../services/useTriviaOptions'
+import { createURL } from '../services'
+import { options } from '../utils'
 import axios from 'axios';
 const AppContext = createContext()
 
