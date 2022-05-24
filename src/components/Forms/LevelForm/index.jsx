@@ -10,7 +10,7 @@ export function LevelForm () {
       Which level?
       <select
         name="level"
-        onChange={(e) => setLevel(e.target.value)}
+        onChange={(e) => { return setLevel(e.target.value) }}
         defaultValue="none"
       >
         <option value="none" selected disabled hidden>Select level</option>
