@@ -13,8 +13,12 @@ export function ThemeForm() {
   return (
     <Label>
         Select your theme:
-        <select name="theme" onChange={e => setCategory(e.target.value)}>
-          <option selected disabled>Select a theme</option>
+        <select
+          name="theme"
+          onChange={e => setCategory(e.target.value)}
+          defaultValue="none"
+      >
+          <option value="none" selected disabled hidden>Select theme</option>
           {categories.map((item, index) => (
             <option key={index} value={item}>{item}</option>
           ))}

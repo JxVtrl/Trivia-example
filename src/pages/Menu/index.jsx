@@ -4,7 +4,7 @@ import { Container } from './styles';
 import { AmountForm, LevelForm, ModeForm, NameForm, ThemeForm } from '../../components/Forms';
 
 export function Menu() {
-    const { setStep, step, category, level, amount, mode } = useApp();
+    const { setStep, step, setCategory, category, level, amount, mode, fetchApiNormal, fetchApiRank } = useApp();
 
     useEffect(() => {
         if (localStorage.getItem('name')) {
@@ -15,9 +15,17 @@ export function Menu() {
     function submitOptions(event) {
         event.preventDefault();
 
-        if (category && level && amount) {
-            setStep(step + 1);
-        } else if (mode === 'rank' && category) {
+        if ((category && level && amount && mode === 'normal') || (mode === 'rank')) {
+            if (!category) {
+                setCategory('General Knowledge')
+            }
+
+            if (mode === 'rank') {
+                fetchApiRank()
+            } else {
+                fetchApiNormal()
+            }
+
             setStep(step + 1);
         }
     }

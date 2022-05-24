@@ -1,33 +1,32 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 
 import { Container } from './styles';
 import { useApp } from '../../context';
+import { Question } from '../../components/Question';
 
 export function Game() {
-    const { trivia } = useApp();
-
-    function createMarkup(question) {
-        return { __html: question };
-    }
+    const { trivia, mode, questionNum } = useApp();
 
     return (
-        <Container>   
-            {trivia.map((item, index) => (
-                <div key={index}>
-                    <h1
-                        dangerouslySetInnerHTML={createMarkup(item.question)}
-                    />
-                    <h2
-                        dangerouslySetInnerHTML={createMarkup(item.correct_answer)}
-                    />
-                    {item.incorrect_answers.map((item, index) => (
-                        <h2
-                            key={index}
-                            dangerouslySetInnerHTML={createMarkup(item)}
-                        />
-                    ))}
-                </div>
-            ))}
+        <Container>
+            {mode === 'rank' && trivia ? (
+                <Question
+                    question={trivia[questionNum].question}
+                    answers={item.incorrect_answers.join('%20') + '%20' + item.correct_answer}
+                    correct={trivia[questionNum].correct_answer}
+                />
+            ) : (
+                    <>
+                        {trivia && trivia.map((item, index) => (
+                            <Question
+                                key={index}
+                                question={item.question}
+                                answers={item.incorrect_answers.join('%20') + '%20' + item.correct_answer}
+                                correct={item.correct_answer}
+                            />
+                        ))}
+                </>
+            )}
         </Container>
   );
 }

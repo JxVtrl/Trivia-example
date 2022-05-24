@@ -7,8 +7,12 @@ export function ModeForm() {
     return (
         <Label>
             Choose the game mode:
-            <select onChange={e => setMode(e.target.value)}>
-                <option value="normal" selected>Normal</option>
+            <select
+                onChange={e => setMode(e.target.value)}
+                defaultValue="none"
+            >
+                <option value="none" selected disabled hidden>Select mode</option>
+                <option value="normal">Normal</option>
                 <option value="rank">Ranking</option>
             </select>
         </Label>
