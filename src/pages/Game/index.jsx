@@ -14,10 +14,17 @@ export function Game() {
         <Container>   
             {trivia.map((item, index) => (
                 <div key={index}>
-                    <h1 dangerouslySetInnerHTML={createMarkup(item.question)} />
-                    <h2 dangerouslySetInnerHTML={createMarkup(item.correct_answer)} />
+                    <h1
+                        dangerouslySetInnerHTML={createMarkup(item.question)}
+                    />
+                    <h2
+                        dangerouslySetInnerHTML={createMarkup(item.correct_answer)}
+                    />
                     {item.incorrect_answers.map((item, index) => (
-                    <h2 key={index} dangerouslySetInnerHTML={createMarkup(item)} />
+                        <h2
+                            key={index}
+                            dangerouslySetInnerHTML={createMarkup(item)}
+                        />
                     ))}
                 </div>
             ))}
