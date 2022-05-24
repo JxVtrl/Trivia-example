@@ -10,10 +10,15 @@ function App () {
     handleScroll(questionNum)
   }, [questionNum])
 
+  useEffect(() => {
+    if (step === 6 || step === 5 || step === 3) {
+      handleScroll(0)
+    }
+  }, [step])
+
   function handleScroll (question) {
-    document.getElementById('main').style.transform = `translateY(-${
-      100 * question
-    }%)`
+    document.getElementById('main').style.transform =
+      `translateY(-${100 * question}%)`
   }
 
   return (

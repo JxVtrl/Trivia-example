@@ -39,12 +39,30 @@ export function AppProvider ({ children }) {
     return options.difficulty[random]
   }
 
+  function resetRanked () {
+    setQuestionNum(0)
+    setRightAnswers(0)
+    setTrivia([])
+    setMode('rank')
+    setStep(2)
+  }
+
+  function reset () {
+    setQuestionNum(0)
+    setRightAnswers(0)
+    setMode('')
+    setCategory('')
+    setLevel('')
+    setAmount(0)
+    setStep(1)
+    setTrivia([])
+  }
+
   function fetchApiRank () {
-    console.log(createURL(5, category, getRandomLevel()))
     axios
-      .get(createURL(5, category, getRandomLevel()))
+      .get(createURL(10, category, getRandomLevel()))
       .then((res) => {
-        setTrivia(res.data.results)
+        setTrivia(...trivia, res.data.results)
       })
       .catch((err) => {
         console.log(err)
@@ -55,11 +73,8 @@ export function AppProvider ({ children }) {
     console.log(trivia)
   }, [trivia])
 
-  useEffect(() => {
-    // if (mode === 'rank' && questionNum % 5 === 0 && questionNum !== 0) {
-    //   fetchApiRank()
-    // }
 
+  useEffect(() => {
     if (questionNum === trivia.length && questionNum !== 0) {
       setStep(6)
     }
@@ -84,7 +99,9 @@ export function AppProvider ({ children }) {
     setQuestionNum,
     questionNum,
     rightAnswers,
-    setRightAnswers
+    setRightAnswers,
+    resetRanked,
+    reset
   }
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>

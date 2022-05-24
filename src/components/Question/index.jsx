@@ -4,19 +4,27 @@ import { useDevice } from '../../hooks'
 import { Container } from './styles'
 
 export function Question ({ question, answers, correct }) {
-  const { setQuestionNum, questionNum, mode, setRightAnswers, rightAnswers } = useApp()
+  const {
+    setQuestionNum,
+    questionNum,
+    mode,
+    setRightAnswers,
+    rightAnswers,
+    setStep
+  } = useApp()
+
   const {
     device: { isMobile }
   } = useDevice()
-  answers = answers.split('%20')
-  // .sort(() => Math.random() - 0.5)
 
   function createMarkup (question) {
     return { __html: question }
   }
 
   function removeSpecialChars (str) {
-    return str.replace(/[^a-zA-Z ]/g, '')
+    str = str.replace(/\#.*?;/g, '')
+    str = str.replace(/\&.*?;/g, '')
+    return str.replace(/[^a-zA-Z0-9 ]/g, '')
   }
 
   function verifyAnswer (event) {
@@ -45,7 +53,11 @@ export function Question ({ question, answers, correct }) {
         })
 
       setTimeout(() => {
-        setQuestionNum(questionNum + 1)
+        if (mode === 'rank') {
+          setStep(6)
+        } else {
+          setQuestionNum(questionNum + 1)
+        }
       }, 1500)
     }
   }
@@ -54,7 +66,7 @@ export function Question ({ question, answers, correct }) {
     <Container mobile={isMobile}>
       <h1 dangerouslySetInnerHTML={createMarkup(question)} />
       <ul className='list'>
-        {answers.map((item, index) => (
+        {answers.split('%20').sort().map((item, index) => (
           <li
             onClick={(e) => verifyAnswer(e)}
             key={index}

@@ -35,9 +35,7 @@ export function Menu () {
       (step === 2 && category) ||
       (step === 3 && level) ||
       (step === 4 && amount)
-    ) {
-      return true
-    } else { return false }
+    ) { return true } else { return false }
   }
 
   function submitOptions (event) {
