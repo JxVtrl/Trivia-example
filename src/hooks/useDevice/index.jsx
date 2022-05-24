@@ -1,10 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export function setWindowWidth (
-  width,
-  minWidth,
-  maxWidth
-) {
+export function setWindowWidth (width, minWidth, maxWidth) {
   switch (true) {
     case !minWidth:
       return width <= maxWidth

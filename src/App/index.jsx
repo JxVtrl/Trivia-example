@@ -11,7 +11,9 @@ function App () {
   }, [questionNum])
 
   function handleScroll (question) {
-    document.getElementById('main').style.transform = `translateY(-${100 * question}%)`
+    document.getElementById('main').style.transform = `translateY(-${
+      100 * question
+    }%)`
   }
 
   return (

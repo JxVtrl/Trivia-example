@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useState, useRef } from 'react'
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useRef
+} from 'react'
 import { createURL } from '../services'
 import { options } from '../utils'
 import axios from 'axios'
@@ -17,11 +23,12 @@ export function AppProvider ({ children }) {
   const [questionNum, setQuestionNum] = useState(0)
 
   function fetchApiNormal () {
-    axios.get(createURL(amount, category, level))
-      .then(res => {
+    axios
+      .get(createURL(amount, category, level))
+      .then((res) => {
         setTrivia(res.data.results)
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
       })
   }
@@ -32,11 +39,12 @@ export function AppProvider ({ children }) {
   }
 
   function fetchApiRank () {
-    axios.get(createURL(5, category, getRandomLevel()))
-      .then(res => {
+    axios
+      .get(createURL(5, category, getRandomLevel()))
+      .then((res) => {
         setTrivia(...trivia, res.data.results)
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err)
       })
   }
@@ -71,11 +79,7 @@ export function AppProvider ({ children }) {
     questionNum
   }
 
-  return (
-        <AppContext.Provider value={value}>
-            {children}
-        </AppContext.Provider>
-  )
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>
 }
 
 export function useApp () {

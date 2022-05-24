@@ -9,14 +9,18 @@ export function LevelForm () {
     <Label isDisabled={mode === 'rank'}>
       Which level?
       <select
-        name="level"
-        onChange={(e) => { return setLevel(e.target.value) }}
-        defaultValue="none"
+        name='level'
+        onChange={(e) => {
+          return setLevel(e.target.value)
+        }}
+        defaultValue='none'
       >
-        <option value="none" selected disabled hidden>Select level</option>
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
+        <option value='none' selected disabled hidden>
+          Select level
+        </option>
+        <option value='easy'>Easy</option>
+        <option value='medium'>Medium</option>
+        <option value='hard'>Hard</option>
       </select>
     </Label>
   )

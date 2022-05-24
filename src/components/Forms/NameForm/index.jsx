@@ -21,14 +21,14 @@ export function NameForm () {
       <label>
         Who are you?
         <input
-          type="text"
-          name="name"
-          placeholder="Enter your name"
+          type='text'
+          name='name'
+          placeholder='Enter your name'
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
       </label>
-      <input type="submit" value="Submit" />
+      <input type='submit' value='Submit' />
     </Form>
   )
 }

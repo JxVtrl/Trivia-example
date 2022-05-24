@@ -5,6 +5,7 @@
   },
   "extends": [
     "plugin:react/recommended",
+    "prettier",
     "standard",
     "eslint:recommended"
   ],
@@ -15,14 +16,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [ "react"],
+  "plugins": ["react"],
   "rules": {
     "no-unused-vars": "warn",
     "object-shorthand": "off",
     // "import/prefer-default-export": 0,
+    "quotes": ["warn", "single"],
     "no-console": "warn",
     "prettier.semi": 0,
-    "react/prop-types": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": "off"
   }
 }

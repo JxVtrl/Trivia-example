@@ -15,7 +15,15 @@ export function AmountForm () {
   return (
     <Label isDisabled={mode === 'rank'}>
       How many questions?
-      <input type="number" name="amount" min="1" max="50" onChange={e => handleChange(e)} placeholder='0-50'/>
+      <input
+        type='number'
+        name='amount'
+        min='1'
+        max='50'
+        datatype='number'
+        onChange={(e) => handleChange(e)}
+        placeholder='0-50'
+      />
     </Label>
   )
 }

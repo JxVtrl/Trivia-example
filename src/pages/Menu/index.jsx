@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react'
 import { useApp } from '../../context'
 import { Container } from './styles'
-import { AmountForm, LevelForm, ModeForm, NameForm, ThemeForm } from '../../components/Forms'
+import {
+  AmountForm,
+  LevelForm,
+  ModeForm,
+  NameForm,
+  ThemeForm
+} from '../../components/Forms'
 
 export function Menu () {
   const {
@@ -24,7 +30,10 @@ export function Menu () {
   function submitOptions (event) {
     event.preventDefault()
 
-    if ((category && level && amount && mode === 'normal') || (mode === 'rank' && category)) {
+    if (
+      (category && level && amount && mode === 'normal') ||
+      (mode === 'rank' && category)
+    ) {
       if (mode === 'rank') {
         fetchApiRank()
       } else {
@@ -36,17 +45,20 @@ export function Menu () {
   }
 
   return (
-        <Container>
-            {step === 0
-              ? <NameForm />
-              : <form onSubmit={e => submitOptions(e)}>
-                    <ModeForm />
-                    <ThemeForm />
-                    <LevelForm />
-                    <AmountForm />
-                    <input type="submit" value="Submit" />
-                </form>
-            }
-        </Container>
+    <Container>
+      {step === 0
+        ? (
+        <NameForm />
+          )
+        : (
+        <form onSubmit={(e) => submitOptions(e)}>
+          <ModeForm />
+          <ThemeForm />
+          <LevelForm />
+          <AmountForm />
+          <input type='submit' value='Submit' />
+        </form>
+          )}
+    </Container>
   )
 }

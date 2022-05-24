@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install",
+    "format": "prettier --write .",
+    "lintFix": "eslint src --fix --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -25,7 +28,9 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
-    "prettier": "^2.3.2",
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.2",
+    "prettier": "2.6.2",
     "vite": "^2.9.0"
   }
 }
