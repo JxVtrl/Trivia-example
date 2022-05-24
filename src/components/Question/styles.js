@@ -56,7 +56,8 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
+    padding: 15px;
+    text-align: center;
     cursor: pointer;
 
     border: 1px solid #ccc;

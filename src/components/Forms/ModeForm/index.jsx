@@ -8,7 +8,7 @@ export function ModeForm () {
     <Label>
       Choose the game mode:
       <select onChange={(e) => setMode(e.target.value)} defaultValue='none'>
-        <option value='none' selected disabled hidden>
+        <option value='none' disabled hidden>
           Select mode
         </option>
         <option value='normal'>Normal</option>

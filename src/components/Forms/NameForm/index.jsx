@@ -1,12 +1,11 @@
 import React from 'react'
 import { useApp } from '../../../context'
-import { Form } from './styles'
 
 export function NameForm () {
   const { setName, name, setStep } = useApp()
 
-  function submitName (event) {
-    event.preventDefault()
+  const handleChange = (e) => {
+    setName(e.target.value)
 
     if (!name || name < 3) {
       alert('Nome inválido')
@@ -17,18 +16,15 @@ export function NameForm () {
   }
 
   return (
-    <Form onSubmit={(e) => submitName(e)}>
-      <label>
-        Who are you?
-        <input
-          type='text'
-          name='name'
-          placeholder='Enter your name'
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      <input type='submit' value='Submit' />
-    </Form>
+    <label>
+      Who are you?
+      <input
+        type='text'
+        name='name'
+        placeholder='Enter your name'
+        value={name}
+        onChange={(e) => handleChange(e)}
+      />
+    </label>
   )
 }

@@ -10,15 +10,19 @@ export function ThemeForm () {
   const { themes } = options
   const categories = Object.keys(themes).map((key) => themes[key])
 
+  const handleChange = (e) => {
+    setCategory(e.target.value)
+  }
+
   return (
     <Label>
       Select your theme:
       <select
         name='theme'
-        onChange={(e) => setCategory(e.target.value)}
+        onChange={handleChange}
         defaultValue='none'
       >
-        <option value='none' selected disabled hidden>
+        <option value='none' disabled hidden>
           Select theme
         </option>
         {categories.map((item, index) => (

@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "prepare": "husky install",
+    "prepare": "husky install .config/husky",
     "format": "prettier --write .",
     "lintFix": "eslint src --fix --ext .js,.jsx,.ts,.tsx"
   },

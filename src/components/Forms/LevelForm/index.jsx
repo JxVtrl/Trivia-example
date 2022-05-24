@@ -15,7 +15,7 @@ export function LevelForm () {
         }}
         defaultValue='none'
       >
-        <option value='none' selected disabled hidden>
+        <option value='none' disabled hidden>
           Select level
         </option>
         <option value='easy'>Easy</option>

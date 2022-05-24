@@ -21,6 +21,7 @@ export function AppProvider ({ children }) {
 
   const [trivia, setTrivia] = useState([])
   const [questionNum, setQuestionNum] = useState(0)
+  const [rightAnswers, setRightAnswers] = useState(0)
 
   function fetchApiNormal () {
     axios
@@ -39,10 +40,11 @@ export function AppProvider ({ children }) {
   }
 
   function fetchApiRank () {
+    console.log(createURL(5, category, getRandomLevel()))
     axios
       .get(createURL(5, category, getRandomLevel()))
       .then((res) => {
-        setTrivia(...trivia, res.data.results)
+        setTrivia(res.data.results)
       })
       .catch((err) => {
         console.log(err)
@@ -54,8 +56,12 @@ export function AppProvider ({ children }) {
   }, [trivia])
 
   useEffect(() => {
-    if (mode === 'rank' && questionNum % 5 === 0 && questionNum !== 0) {
-      fetchApiRank()
+    // if (mode === 'rank' && questionNum % 5 === 0 && questionNum !== 0) {
+    //   fetchApiRank()
+    // }
+
+    if (questionNum === trivia.length && questionNum !== 0) {
+      setStep(6)
     }
   }, [questionNum])
 
@@ -76,7 +82,9 @@ export function AppProvider ({ children }) {
     fetchApiNormal,
     fetchApiRank,
     setQuestionNum,
-    questionNum
+    questionNum,
+    rightAnswers,
+    setRightAnswers
   }
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>
