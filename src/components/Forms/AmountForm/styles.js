@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
 export const Label = styled.label`
-    display: flex;
+    display: ${props => props.isDisabled ? 'none' : 'flex'};
     flex-direction: column;
 `;

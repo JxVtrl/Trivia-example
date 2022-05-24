@@ -12,6 +12,7 @@ export function NameForm() {
         alert('Nome inválido');
         return;
     } else {
+        localStorage.setItem('name', name);
         setStep(1);
     }
   }

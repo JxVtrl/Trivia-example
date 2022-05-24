@@ -3,10 +3,10 @@ import { useApp } from '../../../context';
 import { Label } from './styles';
 
 export function LevelForm() {
-  const { setLevel } = useApp();
+  const { setLevel, mode } = useApp();
 
   return (
-    <Label>
+    <Label isDisabled={mode === 'rank'}>
       Which level?
       <select name="level" onChange={(e) => setLevel(e.target.value)}>
         <option selected disabled>Select level</option>
